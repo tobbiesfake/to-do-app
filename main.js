@@ -290,6 +290,7 @@ const storeToLocal = function () {
 if(window.localStorage.getItem('myLocalTasks') === null){
     window.localStorage.setItem('myLocalTasks', '{"myDay":{"completed":[],"uncompleted":["Add your first task by clicking on ➕ Add a task","Tap all the circles in this list to complete your tasks ✔️","🖱️ Click this tag to view and edit information in content field ✏️","👉 Select this task and click 🗑️ to delete task"]},"important":{"completed":[],"uncompleted":[]},"assignToMe":{"completed":[],"uncompleted":[]},"planned":{"completed":[],"uncompleted":["Learn Basic JavaScript ","Learn Advanced JavaScript ","Learn React","Review Important Knowleadge","Get a great JOB"]},"groceries":{"completed":[],"uncompleted":["🥕 Fruit & Vegetables","🍞 Bread","🥚 Eggs","🍼 Dutch Girl Milk"]},"work":{"completed":[],"uncompleted":[]},"school":{"completed":[],"uncompleted":[]},"family":{"completed":[],"uncompleted":[]}}');
 }
+
 //~~~~Initialize Data~~~~//
 if (window.localStorage.getItem('myLocalTasks') !== null) {
     myTaskData = JSON.parse(window.localStorage.getItem('myLocalTasks'));
