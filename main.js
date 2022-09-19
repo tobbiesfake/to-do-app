@@ -89,6 +89,16 @@ const hintSelectedTask = (e) => {
         return true;
     }
 }
+
+const hideShowAdder = function(){
+    if (currentPanel === 'completed' || currentPanel === 'uncompleted') {
+        adderContainer.classList.add('hide');
+        taskContainer.querySelector('.task-container').classList.add('expand-task-container');
+    } else {
+        adderContainer.classList.remove('hide');
+        taskContainer.querySelector('.task-container').classList.remove('expand-task-container');
+    }
+}
 const showTasks = function (panel) {
     const loopState = function (arr, cate, status) {
         if (arr[0] !== undefined) {
@@ -276,6 +286,9 @@ const storeToLocal = function () {
 
 // ----------------EXECUTING-----------------------//
 
+//example
+window.localStorage.setItem('myLocalTasks', '{"myDay":{"completed":[],"uncompleted":["Add your first task by clicking on ➕ Add a task","Tap all the circles in this list to complete your tasks ✔️","🖱️ Click this tag to view and edit information in content field ✏️","👉 Select this task and click 🗑️ to delete task"]},"important":{"completed":[],"uncompleted":[]},"assignToMe":{"completed":[],"uncompleted":[]},"planned":{"completed":[],"uncompleted":["Learn Basic JavaScript ","Learn Advanced JavaScript ","Learn React","Review Important Knowleadge","Get a great JOB"]},"groceries":{"completed":[],"uncompleted":["🥕 Fruit & Vegetables","🍞 Bread","🥚 Eggs","🍼 Dutch Girl Milk"]},"work":{"completed":[],"uncompleted":[]},"school":{"completed":[],"uncompleted":[]},"family":{"completed":[],"uncompleted":[]}}');
+
 //~~~~Initialize Data~~~~//
 if (window.localStorage.getItem('myLocalTasks') !== null) {
     myTaskData = JSON.parse(window.localStorage.getItem('myLocalTasks'));
@@ -303,6 +316,7 @@ allLoadPanel = {
 firstLoadPanel = allLoadPanel.allTasks;
 currentPanel = firstLoadPanel;
 getPanel(currentPanel).classList.add('active-panel');
+hideShowAdder();
 showTags(currentPanel);
 showTasks(currentPanel);
 showCompleteTag();
@@ -333,13 +347,7 @@ allPanels.forEach((elt) => {
         })
         this.classList.add('active-panel');
         currentPanel = this.attributes.keyaccess.value;
-        if (currentPanel === 'completed' || currentPanel === 'uncompleted') {
-            adderContainer.classList.add('hide');
-            taskContainer.querySelector('.task-container').classList.add('expand-task-container');
-        } else {
-            adderContainer.classList.remove('hide');
-            taskContainer.querySelector('.task-container').classList.remove('expand-task-container');
-        }
+        hideShowAdder();
         infoEventLis('remove');
         taskInfo.value = null;
         showTags(currentPanel);
