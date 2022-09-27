@@ -445,7 +445,8 @@ body {
 }
 
 .quote {
-    font-size: 0.25rem;
+    font-size: 0.5rem;
+    font-style: italic;
     font-weight: 300;
 }
 
