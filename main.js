@@ -315,7 +315,7 @@ allLoadPanel = {
     school: 'school',
     family: 'family',
 }
-firstLoadPanel = allLoadPanel.allTasks;
+firstLoadPanel = allLoadPanel.myDay;
 currentPanel = firstLoadPanel;
 getPanel(currentPanel).classList.add('active-panel');
 hideShowAdder();
